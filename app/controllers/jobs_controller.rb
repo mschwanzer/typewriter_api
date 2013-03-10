@@ -1,11 +1,11 @@
 class JobsController < ApplicationController
-  # GET /jobs
-  # GET /jobs.json
+  before_filter :authenticate, :only => :show
+
   def index
     @jobs = Job.all
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
       format.json { render json: @jobs }
     end
   end
@@ -78,6 +78,15 @@ class JobsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to jobs_url }
       format.json { head :no_content }
+    end
+  end
+
+  private 
+
+
+  def authenticate
+    authenticate_or_request_with_http_basic('Administration') do |username, password|
+      username == 'admin' && password == 'password'
     end
   end
 end
