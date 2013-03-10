@@ -24,9 +24,11 @@ class JobsControllerTest < ActionController::TestCase
     assert_redirected_to job_path(assigns(:job))
   end
 
-  test "should show job" do
+
+# TODO check for response with proper auth
+  test "should not show job" do
     get :show, id: @job
-    assert_response :success
+    assert_response 401
   end
 
   test "should get edit" do
