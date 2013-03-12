@@ -1,5 +1,5 @@
 class JobsController < ApplicationController
-  before_filter :authenticate, :only => :show
+  before_filter :authenticate, :except => :index
 
   def index
     @jobs = Job.all
@@ -13,11 +13,12 @@ class JobsController < ApplicationController
   # GET /jobs/1
   # GET /jobs/1.json
   def show
-    @job = Job.find(params[:id])
+    # hands out latest job (status not printed)
+    @job = Job.all.last
 
     respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @job }
+      #format.html # show.html.erb
+      format.text { render text: @job.content }
     end
   end
 
