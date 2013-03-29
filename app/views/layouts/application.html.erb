@@ -16,54 +16,42 @@
 
   </head>
   <body>
+  <div class="container marketing">
 
-    <div class="navbar navbar-fluid-top">
-      <div class="navbar-inner">
-        <div class="container-fluid">
-          <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="#">TypewriterApi</a>
-          <div class="container-fluid nav-collapse">
-            <ul class="nav">
-              <li><%= link_to "Link1", "/path1"  %></li>
-              <li><%= link_to "Link2", "/path2"  %></li>
-              <li><%= link_to "Link3", "/path3"  %></li>
-            </ul>
-          </div><!--/.nav-collapse -->
-        </div>
+
+
+      <div class="featurette">
+        <h2 class="featurette-heading">Building the coolest time-lapse camera ever made.. <span class="muted">You'll want one.</span></h2>
+        <p class="lead">Imagine affordable, solar-powered and weather-proof dice that will take a photo every minute, hour or day.</p>
       </div>
-    </div>
 
-    <div class="container-fluid">
-      <div class="row-fluid">
-        <div class="span3">
-          <div class="well sidebar-nav">
-            <ul class="nav nav-list">
-              <li class="nav-header">Sidebar</li>
-              <li><%= link_to "Link1", "/path1"  %></li>
-              <li><%= link_to "Link2", "/path2"  %></li>
-              <li><%= link_to "Link3", "/path3"  %></li>
-            </ul>
-          </div><!--/.well -->
-        </div><!--/span-->
-        <div class="span9">
+      <hr class="featurette-divider">
+
+
+
           <%= bootstrap_flash %>
           <%= yield %>
-        </div>
-      </div><!--/row-->
 
-      <footer>
-        <p>&copy; <%= link_to 'Michael Schwanzer @mschwanzer','https://www.twitter.com/mschwanzer', :target => "_blank" %> <%= Time.now.year %></p>
+      <!-- FOOTER -->
+     <footer>
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>&copy; 2013 Michael Schwanzer &middot; <a href="http://www.twitter.com/mschwanzer">@mschwanzer</a></p>
       </footer>
 
-    </div> <!-- /container -->
+    </div><!-- /.container -->
 
-    <!-- Javascripts
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
+
+
+        <script>
+            var _gaq=[['_setAccount','UA-1705107-25'],['_trackPageview']];
+            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+            g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+            s.parentNode.insertBefore(g,s)}(document,'script'));
+        </script>
+
+
+
+
     <%= javascript_include_tag "application" %>
 
   </body>
