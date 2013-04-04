@@ -17,7 +17,7 @@
 
 username = "admin"
 password = "password"
-line_width = 3 # chars that fit on paper line
+line_width = 20 # chars that fit on paper line
 wait_time = 5 # seconds to wait if no job was around
 
 
@@ -151,6 +151,19 @@ def _execute():
 
     GPIO.output(_RCLK_pin, GPIO.HIGH)
 
+def newline():
+    digitalWrite(10, HIGH)
+    delay(0.15)
+    digitalWrite(10, LOW)
+    delay(0.15)
+    
+def pullkey(key_number):
+    digitalWrite(key_number, HIGH)
+    delay(0.2)
+    digitalWrite(key_number, LOW)
+    delay(0.2) 
+    
+    
 pinsSetup()
     
     
@@ -162,30 +175,32 @@ while True:
     time.sleep(wait_time)
     print("NOTHING TO DO HERE! Taking a break.")
   else:
+      
+    paper_feed = 0
+    while paper_feed < 10:
+        newline()
+        paper_feed +=1
     pos = 0
     while pos < content.__len__() : 
       # TODO NO MATTER where Cartrige is, Pull it to the other side and give me a new line
       print(content[pos])
+      c = content[pos]
+      if c == 'a':
+        pullkey(6)
+      elif c == 'b':
+        pullkey(1)
+      elif c == 'o':
+        pullkey(0)
+      elif c == 'x':
+        pullkey(1)
+      elif c == ' ':
+        pullkey(8)
+      else:
+        pullkey(8)
+        print('Sorry no solenoid for this')
       # TODO if content[pos] == a : signal to shift registers that equals "10000000" and then set 000000 again after delay
       pos += 1
-      if pos % line_width == 0 : 
+      if pos % line_width == 0 :
+        newline()
         print("--------------- NEW LINE + Cartrige Return -------------")
-        # DELAY FOR A SEC
-
-    i = 0
-    while i < 11 : 
-        
-        if i == 10:
-            digitalWrite(i, HIGH)
-            delay(0.15)
-            digitalWrite(i, LOW)
-            delay(0.15)
-        else:
-            digitalWrite(i, HIGH)
-            delay(0.2)
-            digitalWrite(i, LOW)
-            delay(0.2)   
-        i +=1
-        
     digitalWrite(ALL, LOW)  
-
