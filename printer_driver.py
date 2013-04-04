@@ -26,6 +26,7 @@ wait_time = 5 # seconds to wait if no job was around
 import time
 import urllib2
 import RPi.GPIO as GPIO
+from time import sleep
 
 GPIO.setmode(GPIO.BCM)
 
@@ -50,47 +51,11 @@ _number_of_shiftregisters = 2
 ################ Auth Stuff to get latest job
 password_mgr = urllib2.HTTPPasswordMgrWithDefaultRealm()
 top_level_url = "http://lepetiteprintshop.com/"
-top_level_url = "http://localhost:3000/"
+#top_level_url = "http://localhost:3000/"
 password_mgr.add_password(None, top_level_url, username, password)
 handler = urllib2.HTTPBasicAuthHandler(password_mgr)
 opener = urllib2.build_opener(handler)
 urllib2.install_opener(opener)
-
-
-################ Printing Jobs
-while True: 
-  response = urllib2.urlopen('http://lepetiteprintshop.com/jobs/lineup.text')
-  content = response.read()
-  if content == 'NULL':
-    time.sleep(wait_time)
-    print("NOTHING TO DO HERE! Taking a break.")
-  else:
-    pos = 0
-    while pos < content.__len__() : 
-      # TODO NO MATTER where Cartrige is, Pull it to the other side and give me a new line
-      print(content[pos])
-      # TODO if content[pos] == a : signal to shift registers that equals "10000000" and then set 000000 again after delay
-      pos += 1
-      if pos % line_width == 0 : 
-        print("--------------- NEW LINE + Cartrige Return -------------")
-        # DELAY FOR A SEC
-
-    i = 0
-    while i < 11 : 
-        
-        if i == 10:
-            digitalWrite(i, HIGH)
-            delay(0.15)
-            digitalWrite(i, LOW)
-            delay(0.15)
-        else:
-            digitalWrite(i, HIGH)
-            delay(0.2)
-            digitalWrite(i, LOW)
-            delay(0.2)   
-        i +=1
-        
-    digitalWrite(ALL, LOW)  
 
 ################ Shift Register Functionality 
 
@@ -188,3 +153,39 @@ def _execute():
 
 pinsSetup()
     
+    
+################ Printing Jobs
+while True: 
+  response = urllib2.urlopen('http://lepetiteprintshop.com/jobs/lineup.text')
+  content = response.read()
+  if content == 'NULL':
+    time.sleep(wait_time)
+    print("NOTHING TO DO HERE! Taking a break.")
+  else:
+    pos = 0
+    while pos < content.__len__() : 
+      # TODO NO MATTER where Cartrige is, Pull it to the other side and give me a new line
+      print(content[pos])
+      # TODO if content[pos] == a : signal to shift registers that equals "10000000" and then set 000000 again after delay
+      pos += 1
+      if pos % line_width == 0 : 
+        print("--------------- NEW LINE + Cartrige Return -------------")
+        # DELAY FOR A SEC
+
+    i = 0
+    while i < 11 : 
+        
+        if i == 10:
+            digitalWrite(i, HIGH)
+            delay(0.15)
+            digitalWrite(i, LOW)
+            delay(0.15)
+        else:
+            digitalWrite(i, HIGH)
+            delay(0.2)
+            digitalWrite(i, LOW)
+            delay(0.2)   
+        i +=1
+        
+    digitalWrite(ALL, LOW)  
+
