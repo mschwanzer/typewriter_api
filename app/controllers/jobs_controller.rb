@@ -13,14 +13,31 @@ class JobsController < ApplicationController
   # GET /jobs/1
   # GET /jobs/1.json
   def show
-    # hands out latest job (status not printed)
-    @job = Job.all.last
-
+    @job = Job.find(params[:id])
     respond_to do |format|
-      #format.html # show.html.erb
+      format.html # show.html.erb
       format.text { render text: @job.content }
     end
   end
+
+
+  # GET /jobs/lineup.text
+  def lineup
+    # hands out latest job (status not printed)
+    if @job = Job.where("status_code = ?", "Lined Up").last
+      @job.status_code = "Printing or already printed"
+      @job.save
+    respond_to do |format|
+      format.text { render text: @job.content }
+    end
+  else
+    respond_to do |format|
+      format.text { render text: "NULL" }
+    end
+  end
+
+  end
+
 
   # GET /jobs/new
   # GET /jobs/new.json
@@ -42,10 +59,11 @@ class JobsController < ApplicationController
   # POST /jobs.json
   def create
     @job = Job.new(params[:job])
-
+    @job.status_code = "Lined Up"
     respond_to do |format|
       if @job.save
-        format.html { redirect_to @job, notice: 'Job was successfully created.' }
+
+        format.html { redirect_to action: "index", notice: 'Job was successfully created.' }
         format.json { render json: @job, status: :created, location: @job }
       else
         format.html { render action: "new" }

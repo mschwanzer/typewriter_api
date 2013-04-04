@@ -8,6 +8,7 @@
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:owner) %></th>
       <th><%= model_class.human_attribute_name(:content) %></th>
+      <th><%= model_class.human_attribute_name(:status_code) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
@@ -18,6 +19,7 @@
         <td><%= link_to job.id, job_path(job) %></td>
         <td><%= job.owner %></td>
         <td><%= job.content %></td>
+        <td><%= job.status_code %></td>
         <td><%=l job.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
