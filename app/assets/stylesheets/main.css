@@ -11,7 +11,14 @@ body {
 .fb-comments, .fb-comments iframe[style] {width: 100% !important;}
 .fb-comments, .fb-comments span {width: 100% !important;}
 
-
+#animation { 
+    background-image: url(https://dl.dropboxusercontent.com/u/13444/typewriter_header_mini.png);
+    background-repeat: no-repeat; 
+    height: 133px; 
+    width: 925px; 
+    position: fixed;
+    bottom: 0px;
+}
 
 
 

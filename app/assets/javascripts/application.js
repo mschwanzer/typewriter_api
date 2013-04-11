@@ -14,3 +14,15 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require_tree .
+
+
+onload = function startAnimation() { 
+    var frameHeight = 10; 
+    var frames = 40; 
+    var frame = 0; 
+    var div = document.getElementById("animation"); 
+    setInterval(function () { 
+        var frameOffset = (++frame % frames) * -frameHeight; 
+        div.style.backgroundPosition = frameOffset + "px 0px"; 
+    }, 200); 
+} 
