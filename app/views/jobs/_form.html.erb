@@ -5,16 +5,11 @@
       <%= f.text_field :owner, :class => 'text_field' %>
     </div>
   </div>
-  <div class="control-group">
-    <%= f.label :status_code, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :status_code, :class => 'text_field' %>
-    </div>
-  </div>
+
   <div class="control-group">
     <%= f.label :content, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_area :content, :class => 'text_area' %>
+      <%= f.text_area :content, :class => 'text_area', :rows => "5" %>
     </div>
   </div>
   <div class="form-actions">

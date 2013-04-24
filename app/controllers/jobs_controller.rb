@@ -42,7 +42,15 @@ class JobsController < ApplicationController
   # GET /jobs/new
   # GET /jobs/new.json
   def new
+    params.each do |key,value|
+      Rails.logger.warn "Param #{key}: #{value}"
+    end
     @job = Job.new
+
+    Twitter::Search.new.containing("marry me").to("justinbieber").result_type("recent").per_page(3).each do |r|
+      Rails.logger.warn "Param #{r.from_user}: #{r.text}"
+      #MyLocalTweetModel.create!(:from_user => r.from_user, :text => #{r.text}")
+    end
 
     respond_to do |format|
       format.html # new.html.erb
