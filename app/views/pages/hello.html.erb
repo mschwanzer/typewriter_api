@@ -19,10 +19,10 @@
           <hr class="featurette-divider">
 
           <h3>Recent and Upcoming Jobs, so far printed <%= Job.count %> tweets</h3>
-          <%= link_to refresh_jobs_path, :class => 'btn-small btn-success pull-right' do %>
-              <i class="icon-cloud-download"></i> Pull 
+          <%= link_to refresh_jobs_path, :class => 'btn btn-success pull-right' do %>
+              <i class="icon-cloud-download"></i> Print New Tweets 
           <% end %>
-                      <p>Jobs are pulled from twitter every 10 minutes automatically.<br/> If you can't wait, hit the "Pull" button right here after you tweeted.</p>
+                      <p>Jobs are pulled from twitter every 10 minutes.<br/> If you can't wait, hit the "Print New Tweets" button after you tweeted.</p>
           <table class="table table-striped">
             <tbody>
               <% @jobs.each do |job| %>
@@ -76,16 +76,15 @@
           <% end %>
 
                   <p class="lead">
-                    Getting your <i class="icon-twitter icon-large"></i> tweet printed is easy.  Mention <a href="http://www.twitter.com/lepetiteprinter">@lepetiteprinter</a> and add <i class="icon-tag icon-large"></i> <%= link_to "#printme",'https://twitter.com/search?q=%23printme' %> as hashtag. </p>
-                    <p>
-                      <a href="https://twitter.com/intent/tweet?screen_name=lepetiteprinter&text=this%20cool%20typewriter%20will%20print%20this%20tweet%3A%20http%3A%2F%2Fwww.lepetiteprintshop.com%20%23printme" class="twitter-mention-button" data-size="large" data-related="mschwanzer,lepetiteprinter">Tweet to @lepetiteprinter</a>
+                    Getting your <i class="icon-twitter icon-large"></i> tweets printed is easy:</p><p class="lead"><strong>1.</strong> 
+                      <a href="https://twitter.com/intent/tweet?screen_name=lepetiteprinter&text=this%20cool%20typewriter%20will%20print%20this%20tweet%3A%20http%3A%2F%2Fwww.lepetiteprintshop.com" class="twitter-mention-button" data-size="large" data-related="mschwanzer,lepetiteprinter">Mention @lepetiteprinter</a>
 
                       <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-                    </p>
+                
 
-                    <p  class="lead">Hit <%= link_to refresh_jobs_path, :class => 'btn-small btn-success' do %>
-              <i class="icon-cloud-download"></i> Pull 
-          <% end %>  and watch it being printed on the <i class="icon-facetime-video icon-large"></i> live stream. <i class="icon-thumbs-up icon-large"></i> Try it now! </p>
+                    <p  class="lead"><strong>2.</strong> Hit <%= link_to refresh_jobs_path, :class => 'btn btn-success' do %>
+              <i class="icon-cloud-download"></i> Print New Tweets 
+          <% end %></p><p  class="lead"><strong>3.</strong> Watch it being printed on the <i class="icon-facetime-video icon-large"></i> live stream. </p>
 
 
 

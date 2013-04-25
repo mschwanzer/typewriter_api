@@ -28,9 +28,13 @@ class JobsController < ApplicationController
     # hands out latest job (status not printed)
     if @job = Job.where("status_code = ?", "Lined Up").last
       @job.status_code = "Printing or already printed"
+      @job.owner
       @job.save
+      @printjob = @job.content.downcase
+      @printjob.slice! "@lepetitetypewriter"
+      @printjob.slice! "#printme"
       respond_to do |format|
-        format.text { render text: @job.content.downcase}
+        format.text { render text: "#{@job.owner} "+@printjob}
       end
     else
       respond_to do |format|

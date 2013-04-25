@@ -12,8 +12,11 @@ class Job < ActiveRecord::Base
   def self.load_tweets
     if Job.tweet.count > 0 
       @id = Job.tweet.last.tweet_id
+      puts Job.tweet.count
+      puts @id
     else
       @id = 100000000
+      puts Job.tweet.count
     end
     Twitter.mentions(:since_id=>@id).each do |r|
       puts "#{r.id}:#{r.from_user}: #{r.text}"
