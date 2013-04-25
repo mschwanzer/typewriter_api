@@ -4,7 +4,7 @@ class JobsController < ApplicationController
   before_filter :authenticate, :except => [:refresh]
 
   def index
-    @jobs = Job.all
+    @jobs = Job.order("id DESC").all
 
     respond_to do |format|
       format.html

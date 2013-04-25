@@ -8,12 +8,17 @@
           <% else %>
             <iframe width="100%" height="400" src="http://www.youtube.com/embed/52-wXAhtDbM" frameborder="0" allowfullscreen></iframe>
             <p class="lead">Demo Video. Live Stream only avaiable during hours of operation.</p>
+            <p class="lead">
+              <i class="icon-facetime-video icon-large"></i> This is what you should see during hours of operation.
+            <iframe width="100%" height="400" src="http://www.youtube.com/embed/3T5DqVbl8Cg" frameborder="0" allowfullscreen></iframe>
+
+
           <% end %>
 
     
           <hr class="featurette-divider">
 
-          <h3>Recent and Upcoming Jobs</h3>
+          <h3>Recent and Upcoming Jobs, so far printed <%= Job.count %> tweets</h3>
           <%= link_to refresh_jobs_path, :class => 'btn-small btn-success pull-right' do %>
               <i class="icon-cloud-download"></i> Pull 
           <% end %>
@@ -57,7 +62,8 @@
           <div class="alert alert-block">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
             <h4><i class="icon-ambulance icon-large"></i> Printing Services Temporarily Offline!</h4>
-            <%= @settings.status %>
+            <p><%= @settings.status %></p>
+            <p>Feel free to checkout <%= link_to "some videos of me typing", "http://www.youtube.com/watch?v=3T5DqVbl8Cg&feature=share&list=PL0BF6SJ3yFfSUuW_tw3MK73mTsZYbt21W" %> and the <%= link_to "blog posts about me", "http://michael.schwanzer.info/blog/?s=typewriter" %>.</p>
           </div>
 
           <% else %>
