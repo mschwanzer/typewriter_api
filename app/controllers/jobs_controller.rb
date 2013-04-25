@@ -31,10 +31,13 @@ class JobsController < ApplicationController
       @job.owner
       @job.save
       @printjob = @job.content.downcase
-      @printjob.slice! "@lepetitetypewriter"
+      #@printjob.slice! "@lepetiteprinter"
       @printjob.slice! "#printme"
+      if @job.owner
+        @printjob = "#{@job.owner.downcase} . "+@printjob
+      end
       respond_to do |format|
-        format.text { render text: "#{@job.owner} "+@printjob}
+        format.text { render text: @printjob}
       end
     else
       respond_to do |format|
