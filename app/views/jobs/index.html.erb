@@ -22,9 +22,23 @@
     <% @jobs.each do |job| %>
       <tr>
         <td><%= link_to job.id, job_path(job) %></td>
-        <td><%= job.owner %></td>
-        <td><%= job.content %></td>
-        <td><%= job.status_code %></td>
+        <td><% if job.tweet_id %>
+
+              <%= image_tag job.profile_image_url, :class =>"img-circle media-object" %> <%= link_to "@#{job.owner}", "http://www.twitter.com/#{job.owner}" %>
+        
+            <% else %>
+              <%= job.owner %>
+            <% end %>
+        </td>
+        <td><%=raw Rinku.auto_link(job.content, mode=:all) %></td>
+        <td>
+          <% if job.status_code == 'Lined Up' %>
+          <span class="label label-warning"><%= job.status_code %></span>
+          
+          <% else %>
+            <span class="label label-success"><%= job.status_code %></span>
+          <% end %>
+        </td>
         <td><%=l job.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),

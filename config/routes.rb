@@ -1,4 +1,7 @@
 TypewriterApi::Application.routes.draw do
+  resources :settings
+
+
   get "pages/hello"
 
   resources :jobs do

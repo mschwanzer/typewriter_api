@@ -1,0 +1,10 @@
+one:
+  status: MyText
+  maintanance: false
+  admin_password: password
+  hashtag: MyString
+  twitter_user: MyString
+  twitter_app_id: MyString
+  twitter_app_token: MyString
+  twitter_app_oauth: MyString
+  twitter_app_oauth_token: MyString

@@ -3,6 +3,8 @@ require 'test_helper'
 class JobsControllerTest < ActionController::TestCase
   setup do
     @job = jobs(:one)
+    @request.env["HTTP_AUTHORIZATION"] = "Basic " + Base64::encode64("admin:password")
+    
   end
 
   test "should get index" do
@@ -21,13 +23,16 @@ class JobsControllerTest < ActionController::TestCase
       post :create, job: { content: @job.content, owner: @job.owner }
     end
 
-    assert_redirected_to job_path(assigns(:job))
+    assert_redirected_to jobs_path
   end
 
 
 # TODO check for response with proper auth
   test "should not show job" do
-    get :show, id: @job
+    @job.delete
+    @request.env["HTTP_AUTHORIZATION"] = "Basic " + Base64::encode64("admin:password_wrong")
+    
+    get :index
     assert_response 401
   end
 

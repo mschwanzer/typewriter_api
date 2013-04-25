@@ -1,0 +1,37 @@
+<%- model_class = Setting -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:status) %>:</strong></dt>
+  <dd><%= @setting.status %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:maintanance) %>:</strong></dt>
+  <dd><%= @setting.maintanance %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:admin_password) %>:</strong></dt>
+  <dd><%= @setting.admin_password %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:hashtag) %>:</strong></dt>
+  <dd><%= @setting.hashtag %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:twitter_user) %>:</strong></dt>
+  <dd><%= @setting.twitter_user %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:twitter_app_id) %>:</strong></dt>
+  <dd><%= @setting.twitter_app_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:twitter_app_token) %>:</strong></dt>
+  <dd><%= @setting.twitter_app_token %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:twitter_app_oauth) %>:</strong></dt>
+  <dd><%= @setting.twitter_app_oauth %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:twitter_app_oauth_token) %>:</strong></dt>
+  <dd><%= @setting.twitter_app_oauth_token %></dd>
+</dl>
+
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              settings_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_setting_path(@setting), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              setting_path(@setting),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>

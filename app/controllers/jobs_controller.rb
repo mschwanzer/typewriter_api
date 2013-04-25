@@ -1,5 +1,7 @@
+require 'rinku'
+
 class JobsController < ApplicationController
-  before_filter :authenticate, :except => :index
+  before_filter :authenticate
 
   def index
     @jobs = Job.all
@@ -42,16 +44,7 @@ class JobsController < ApplicationController
   # GET /jobs/new
   # GET /jobs/new.json
   def new
-    params.each do |key,value|
-      Rails.logger.warn "Param #{key}: #{value}"
-    end
-    @job = Job.new
-
-    Twitter::Search.new.containing("marry me").to("justinbieber").result_type("recent").per_page(3).each do |r|
-      Rails.logger.warn "Param #{r.from_user}: #{r.text}"
-      #MyLocalTweetModel.create!(:from_user => r.from_user, :text => #{r.text}")
-    end
-
+    @job = Job.new    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @job }
@@ -71,7 +64,7 @@ class JobsController < ApplicationController
     respond_to do |format|
       if @job.save
 
-        format.html { redirect_to action: "index", notice: 'Job was successfully created.' }
+        format.html { redirect_to action: "index"}
         format.json { render json: @job, status: :created, location: @job }
       else
         format.html { render action: "new" }
@@ -108,12 +101,4 @@ class JobsController < ApplicationController
     end
   end
 
-  private 
-
-
-  def authenticate
-    authenticate_or_request_with_http_basic('Administration') do |username, password|
-      username == 'admin' && password == 'password'
-    end
-  end
 end

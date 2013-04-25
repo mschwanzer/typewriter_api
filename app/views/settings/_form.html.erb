@@ -1,0 +1,74 @@
+<%= form_for @setting, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :status, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :status, :class => 'text_area', :rows => '6' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :camera_link, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :camera_link, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :camera, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :camera, :class => 'check_box' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :maintanance, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :maintanance, :class => 'check_box' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :admin_password, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :admin_password, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :hashtag, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :hashtag, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :twitter_user, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :twitter_user, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :twitter_app_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :twitter_app_id, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :twitter_app_token, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :twitter_app_token, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :twitter_app_oauth, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :twitter_app_oauth, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :twitter_app_oauth_token, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :twitter_app_oauth_token, :class => 'text_field' %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                settings_path, :class => 'btn' %>
+  </div>
+<% end %>
