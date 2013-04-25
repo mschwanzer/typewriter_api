@@ -18,11 +18,8 @@
     
           <hr class="featurette-divider">
 
-          <h3>Recent and Upcoming Jobs, so far printed <%= Job.count %> tweets</h3>
-          <%= link_to refresh_jobs_path, :class => 'btn btn-success pull-right' do %>
-              <i class="icon-cloud-download"></i> Print New Tweets 
-          <% end %>
-                      <p>Jobs are pulled from twitter every 10 minutes.<br/> If you can't wait, hit the "Print New Tweets" button after you tweeted.</p>
+          <h3>Recent and Upcoming Jobs, so far <%= Job.count %> tweets printed</h3>
+
           <table class="table table-striped">
             <tbody>
               <% @jobs.each do |job| %>
@@ -83,7 +80,7 @@
                 
 
                     <p  class="lead"><strong>2.</strong> Hit <%= link_to refresh_jobs_path, :class => 'btn btn-success' do %>
-              <i class="icon-cloud-download"></i> Print New Tweets 
+              <i class="icon-print"></i> Print New Tweets 
           <% end %></p><p  class="lead"><strong>3.</strong> Watch it being printed on the <i class="icon-facetime-video icon-large"></i> live stream. </p>
 
 
@@ -119,7 +116,7 @@
 
           <h4><i class="icon-print icon-large"></i> Printing Services Provided</h4>
           <ul class="icons">
-            <li><i class="icon-ok"></i> Input via Twitter, Email</li>
+            <li><i class="icon-ok"></i> Input via Twitter, Email (if you need more than 140 characters</li>
             <li><i class="icon-ok"></i> Black / Red Ribbon Colour</li>
             <li><i class="icon-ok"></i> Simple ASCII Images</li>
             <li><i class="icon-ok"></i> Business / Personal Letters, Custom Greeting Cards</li>

@@ -27,7 +27,7 @@ class JobsController < ApplicationController
   def lineup
     # hands out latest job (status not printed)
     if @job = Job.where("status_code = ?", "Lined Up").last
-      @job.status_code = "Printing or already printed"
+      @job.status_code = "Printed"
       @job.owner
       @job.save
       @printjob = @job.content.downcase
