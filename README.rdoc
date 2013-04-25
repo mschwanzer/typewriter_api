@@ -2,6 +2,4 @@
 
 Work in progress, checkout http://www.lepetiteprintshop.com
 
-https://www.codeship.io/projects/9ffb0db0-6bee-0130-d1e8-1231391e4775/status?branch=master
-
-![Codeship Status](https://www.codeship.io/projects/9ffb0db0-6bee-0130-d1e8-1231391e4775/status?branch=master "Codeship Status")
+[ ![Codeship Status for mschwanzer/typewriter_api](https://www.codeship.io/projects/9ffb0db0-6bee-0130-d1e8-1231391e4775/status?branch=master)](https://www.codeship.io/projects/1868)

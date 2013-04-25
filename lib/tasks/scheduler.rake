@@ -1,7 +1,12 @@
 desc "Let me load some tweets to print!"
 task :load_tweets => :environment do
   puts "Loading tweets ..."
-  Twitter.mentions(:since_id=>Job.tweet.last.tweet_id).each do |r|
+  if Job.tweet.count > 0 
+    @id = Job.tweet.last.tweet_id
+  else
+    @id = 100000000
+  end
+  Twitter.mentions(:since_id=>@id).each do |r|
     puts "#{r.id}:#{r.from_user}: #{r.text}"
     #puts r.inspect
     if r.text.include? "#printme"
