@@ -63,7 +63,7 @@
             <button type="button" class="close" data-dismiss="alert">&times;</button>
             <h4><i class="icon-ambulance icon-large"></i> Printing Services Temporarily Offline!</h4>
             <p><%= @settings.status %></p>
-            <p>Feel free to checkout <%= link_to "some videos of me typing", "http://www.youtube.com/watch?v=3T5DqVbl8Cg&feature=share&list=PL0BF6SJ3yFfSUuW_tw3MK73mTsZYbt21W" %> and the <%= link_to "blog posts about me", "http://michael.schwanzer.info/blog/?s=typewriter" %>.</p>
+            
           </div>
 
           <% else %>
@@ -82,11 +82,25 @@
                     <a href="https://twitter.com/intent/tweet?screen_name=lepetiteprinter&text=this%20cool%20typewriter%20will%20print%20this%20tweet%3A%20http%3A%2F%2Fwww.lepetiteprintshop.com%20%23printme" class="twitter-mention-button" data-size="large" data-related="mschwanzer,lepetiteprinter">Tweet to @lepetiteprinter</a>
 
                     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+
                   </p>
 
 
-                    <p class="lead"><p>
-               
+                    <p>Feel free to checkout <%= link_to "some videos of me typing", "http://www.youtube.com/watch?v=3T5DqVbl8Cg&feature=share&list=PL0BF6SJ3yFfSUuW_tw3MK73mTsZYbt21W" %> and the <%= link_to "blog posts about me", "http://michael.schwanzer.info/blog/?s=typewriter" %>.</p>
+               <hr/>
+
+               <!-- Place this tag where you want the +1 button to render. -->
+               <div class="g-plusone" data-annotation="inline" data-width="300"></div>
+
+               <!-- Place this tag after the last +1 button tag. -->
+               <script type="text/javascript">
+                 (function() {
+                   var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+                   po.src = 'https://apis.google.com/js/plusone.js';
+                   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+                 })();
+               </script>
             <div class="fb-like" data-href="http://lepetiteprintshop.com" data-send="true" data-width="450" data-show-faces="true"></div>
           
           <hr/>
