@@ -30,7 +30,7 @@ class JobsController < ApplicationController
       @job.status_code = "Printing or already printed"
       @job.save
       respond_to do |format|
-        format.text { render text: @job.content }
+        format.text { render text: @job.content.downcase}
       end
     else
       respond_to do |format|
