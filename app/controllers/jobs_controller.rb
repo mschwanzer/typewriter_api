@@ -1,7 +1,7 @@
 require 'rinku'
 
 class JobsController < ApplicationController
-  before_filter :authenticate
+  before_filter :authenticate, :except => [:refresh]
 
   def index
     @jobs = Job.all
