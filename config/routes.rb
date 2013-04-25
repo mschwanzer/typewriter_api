@@ -7,6 +7,7 @@ TypewriterApi::Application.routes.draw do
   resources :jobs do
     collection do 
       get 'lineup'
+      get 'refresh'
     end
   end
 

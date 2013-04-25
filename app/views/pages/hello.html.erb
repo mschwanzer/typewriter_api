@@ -4,38 +4,84 @@
       <div class="row">
         <div class="span6">
           <iframe width="100%" height="400" src="http://www.youtube.com/embed/52-wXAhtDbM" frameborder="0" allowfullscreen></iframe>
+          <p class="lead">Demo Video. Live Stream only avaiable during hours of operation.</p>
+          <hr class="featurette-divider">
+
+
+
+          
+
+          <h3>Recent and Upcoming Jobs</h3>
+          <%= link_to t('.pull', :default => t("helpers.links.pull")),
+                      refresh_jobs_path,
+                      :class => 'btn-small btn-success pull-right' %>
+                      <p>Jobs are pulled from twitter every 10 minutes automatically.<br/> If you can't wait, hit the "Pull" button right here after you tweeted.</p>
+          <table class="table table-striped">
+            <tbody>
+              <% @jobs.each do |job| %>
+                <tr>
+                  <td>
+
+                        <%= image_tag job.profile_image_url, :class =>"img-circle", :width =>"200" %> 
+
+                  </td>
+                  <td>
+                  
+                    <% if job.status_code == 'Lined Up' %>
+                    <span class="label label-warning pull-right"><%= job.status_code %> since <%= time_ago_in_words(job.created_at) %></span>
+                    
+                    <% else %>
+                      <span class="label label-success pull-right"><%= job.status_code %> <%= time_ago_in_words(job.updated_at) %> ago</span>
+                    <% end %>
+                    
+                    <strong>From <%= link_to "@#{job.owner}", "http://www.twitter.com/#{job.owner}" %></strong><br/> <%=raw Rinku.auto_link(job.content, mode=:all) %>
+                  </td>
+               
+            
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+
+
+
+
+
         </div><!-- /.span4 -->
         <div class="span6">
 
           <div class="alert alert-block">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <h4>Warning!</h4>
-            Best check yo self, you're not...
+            <h4>Printing Services Temporarily Offline!</h4>
+            <%= @settings.status %>
           </div>
 
                   <p class="lead">
-                    Watch me type by myself in this video!</p>
-                    <h4>Don't miss when I am ready for your tweets!</h4>
+                    Getting your tweet printed is easy.  Mention <a href="http://www.twitter.com/lepetiteprinter">@lepetiteprinter</a> in your tweet and add #printme as hashtag. Watch it being printed on the live stream a few minutes later. Cool, eh :)</p>
+                    <a href="https://twitter.com/intent/tweet?screen_name=lepetiteprinter&text=this%20cool%20typewriter%20will%20print%20this%20tweet%3A%20http%3A%2F%2Fwww.lepetiteprintshop.com%20%23printme" class="twitter-mention-button" data-size="large" data-related="mschwanzer,lepetiteprinter">Tweet to @lepetiteprinter</a>
 
-                    <a href="https://twitter.com/lepetiteprinter" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @lepetiteprinter</a> 
-                    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
                   </p>
                     <p class="lead">
-                    <h4>Think this is cool? Let your friends know!</h4>
-                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://lepetiteprintshop.com" data-text="Check out this tweet printing typewriter!" data-via="mschwanzer" data-size="large" data-count="none" data-hashtags="lepetiteprintshop">Tweet</a>
-          <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></p>
+               
             
           
           <hr/>
 
           <div class="media">
-            <h4>Who is building this you wonder?</h4>
+            <h4>Who is running this print shop?</h4>
             <a class="pull-left" href="#">
               <img src="https://twimg0-a.akamaihd.net/profile_images/1436288805/Screen_shot_2011-07-11_at_12.29.32_AM.png" class="img-circle media-object" width="100">
             </a>
             <div class="media-body">
-          <p>Feel free to contact <a href="http://michael.schwanzer.info">Michael Schwanzer</a> if you want to help with this project or have questions. Read more on my <a href="http://michael.schwanzer.info/blog/?s=typewriter&submit=Search">blog</a>.</p>
+          <p>Michael Schwanzer (<a href="http://www.twitter.com/mschwanzer">@mschwanzer</a>) is a strategic thinker who likes to apply his engineering, management and web skills to optimize processes and create new business opportunities.</p>
+          <p>
+            LinkedIn: <a class="email" href="http://www.linkedin.com/in/mschwanzer">http://www.linkedin.com/in/mschwanzer</a><br>
+                    
+                      Github: <a class="email" href="https://github.com/mschwanzer">https://github.com/mschwanzer</a><br>
+                      Blog: <a class="email" href="http://michael.schwanzer.info/blog">http://michael.schwanzer.info/blog</a><br>
 
+          </p>
             </div>
           </div>
 

@@ -29,15 +29,21 @@ class JobsController < ApplicationController
     if @job = Job.where("status_code = ?", "Lined Up").last
       @job.status_code = "Printing or already printed"
       @job.save
-    respond_to do |format|
-      format.text { render text: @job.content }
-    end
-  else
-    respond_to do |format|
-      format.text { render text: "NULL" }
+      respond_to do |format|
+        format.text { render text: @job.content }
+      end
+    else
+      respond_to do |format|
+        format.text { render text: "NULL" }
+      end
     end
   end
 
+
+  # GET refresh
+  def refresh
+    Job.load_tweets
+    redirect_to root_path
   end
 
 
