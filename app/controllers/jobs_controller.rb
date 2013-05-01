@@ -33,6 +33,7 @@ class JobsController < ApplicationController
       @printjob = @job.content.downcase
       #@printjob.slice! "@lepetiteprinter"
       @printjob.slice! "#printme"
+      @printjob.slice! "@lepetiteprinter"
       if @job.owner
         @printjob = "#{@job.owner.downcase} . "+@printjob
       end
