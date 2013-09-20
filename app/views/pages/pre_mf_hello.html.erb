@@ -1,6 +1,22 @@
    <div class="row">
         <div class="span7">
-          
+
+          <% if @settings.camera == true %>
+          <p class="lead">
+            <i class="icon-facetime-video icon-large"></i> Live Stream of Printing Process
+            <img src="<%= @settings.camera_link %>video" alt="Typewriter Video feed"/><p>If no video appears above, you are using an unsupported browser. Tested browsers: <a href="http://www.firefox.com">Mozilla Firefox</a>, <a href="http://www.google.com/chrome">Google Chrome</a></p>
+          <% else %>
+            <iframe width="100%" height="400" src="http://www.youtube.com/embed/lPcGAFuTVxg" frameborder="0" allowfullscreen></iframe>
+            <p class="lead">Demo Video. Live Stream only avaiable during hours of operation.</p>
+            <p class="lead">
+              <i class="icon-facetime-video icon-large"></i> This is what you should see during hours of operation.
+            <iframe width="100%" height="400" src="http://www.youtube.com/embed/3T5DqVbl8Cg" frameborder="0" allowfullscreen></iframe>
+
+
+          <% end %>
+
+    
+          <hr class="featurette-divider">
 
           <h3>Recent and Upcoming Jobs, so far <%= Job.count %> tweets printed</h3>
 
@@ -31,28 +47,15 @@
             </tbody>
           </table>
 
-          <h3>Videos</h3>
-
-          
-
-            <iframe width="100%" height="400" src="http://www.youtube.com/embed/lPcGAFuTVxg" frameborder="0" allowfullscreen></iframe>
-            <p class="lead">Demo Video.</p>
-            <p class="lead">
-              <i class="icon-facetime-video icon-large"></i> This is what you should see during hours of operation.
-            <iframe width="100%" height="400" src="http://www.youtube.com/embed/3T5DqVbl8Cg" frameborder="0" allowfullscreen></iframe>
 
 
-       
+
 
         </div><!-- /.span4 -->
        
           <div class="span5">
-            <h3>See it happen live, this weekend</h3>
-            <img src='http://makerfairetoronto.files.wordpress.com/2013/06/toronto_mmf_logos_wordpress.png'>
-            <hr/>
-            <%= link_to "Buy Tickets NOW!","http://makerfairetoronto.eventbrite.com/#", :class => 'btn btn-danger' %>
-            <hr/>
-
+            <h2>Visit the Typewriter this weekend!</h2>
+            <a href="http://makerfairetoronto.com/" target="_blank"><img src='http://makerfairetoronto.files.wordpress.com/2013/06/toronto_mmf_logos_wordpress.png'></a>
 
           <% if @settings.maintanance == true %>
           <div class="alert alert-block">
@@ -79,7 +82,7 @@
 
                     <p  class="lead"><strong>2.</strong> Hit <%= link_to refresh_jobs_path, :class => 'btn btn-success' do %>
               <i class="icon-print"></i> Print New Tweets 
-          <% end %></p><p  class="lead"><strong>3.</strong> Watch it at the Mini Maker Faire Toronto </p>
+          <% end %></p><p  class="lead"><strong>3.</strong> Watch it being printed on the <i class="icon-facetime-video icon-large"></i> live stream. </p>
 
 
 
