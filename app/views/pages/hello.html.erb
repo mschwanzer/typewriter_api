@@ -73,9 +73,11 @@
 
                   <p class="lead">
                     Getting your <i class="icon-twitter icon-large"></i> tweets printed is easy:</p><p class="lead"><strong>1.</strong> 
-                    <a href="https://twitter.com/intent/tweet?button_hashtag=<%= Setting.last.hashtag %>&text=%40lepetiteprinter%20this%20cool%20typewriter%20will%20print%20this%20tweet%3A" class="twitter-hashtag-button" data-size="large" data-related="mschwanzer" data-url="http://www.lepetiteprintshop.com">Tweet #<%= Setting.last.hashtag %></a>
-                    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-                
+
+                  <a href="https://twitter.com/intent/tweet?screen_name=<%= Setting.last.twitter_user %>" class="twitter-mention-button" data-related="<%= Setting.last.twitter_user %>">Tweet to <%= Setting.last.twitter_user %></a>
+                  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+
 
                     <p  class="lead"><strong>2.</strong> Hit <%= link_to refresh_jobs_path, :class => 'btn btn-success' do %>
               <i class="icon-print"></i> Print New Tweets 

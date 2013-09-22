@@ -19,7 +19,7 @@ class Job < ActiveRecord::Base
       puts Job.tweet.count
     end
 
-    Twitter.search("#"+Setting.last.hashtag, :since_id=>@id).results.each do |r|
+    Twitter.search("to:mschwanzer",:since_id=>@id).results.each do |r|
       puts "#{r.id}:#{r.from_user}: #{r.text}"
       #puts r.inspect
       Job.create(:tweet_id => r.id, :owner => r.from_user, :content => r.text, :location => r.user.location, :profile_image_url => r.user.profile_image_url, :user_id =>r.user.id, :user_name => r.user.name) 
