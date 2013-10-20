@@ -2,8 +2,8 @@
         <div class="span7">
           
 
-          <h3>Recent and Upcoming Jobs, so far <%= Job.count %> tweets printed</h3>
-
+     
+          <% if @settings.maintanance == false %>
           <table class="table table-striped">
             <tbody>
               <% @jobs.each do |job| %>
@@ -30,6 +30,7 @@
               <% end %>
             </tbody>
           </table>
+          <% end %>
 
           <h3>Videos</h3>
 
@@ -47,10 +48,21 @@
         </div><!-- /.span4 -->
        
           <div class="span5">
-            <h3>See it happen live, this weekend</h3>
-            <a href="http://makerfairetoronto.com/" target="_blank"><img src='http://makerfairetoronto.files.wordpress.com/2013/06/toronto_mmf_logos_wordpress.png'></a>
+
+            
+            <h3><%= Job.count %> tweets printed so far</h3>
+            <p>Read about it in the media:</p>
+            <img src="https://pbs.twimg.com/media/BU209v7CMAAOzpt.jpg:large" width="100%" alt="Toronto Star, Kim Nursall">
             <hr/>
-            <%= link_to "Buy Tickets NOW!","http://makerfairetoronto.eventbrite.com/#", :class => 'btn btn-danger' %>
+            
+            <ul>
+              <li><a href="http://www.thestar.com/news/gta/2013/09/21/toronto_mini_maker_faire_featuring_robots_and_3d_printing_a_family_affair.html" target="_blank">Toronto Star, with video</a></li>
+              <li><a href="http://hackaday.com/2013/09/27/mechanical-typewriter-types-your-tweets/" target="_blank">Hack a day</a></li>
+              <li><a href="http://www.betakit.com/shaping-tomorrows-makers-at-torontos-mini-maker-faire/" target="_blank">betakit</a></li>
+
+            </ul>
+            <a href="http://makerfairetoronto.com/" target="_blank"><img src='http://makerfairetoronto.files.wordpress.com/2013/06/toronto_mmf_logos_wordpress.png'></a>
+
             <hr/>
 
 
@@ -69,9 +81,7 @@
             <p>Feel free to tweet now and watch it happen!</p>
           </div>
 
-          <% end %>
-
-                  <p class="lead">
+                            <p class="lead">
                     Getting your <i class="icon-twitter icon-large"></i> tweets printed is easy:</p><p class="lead"><strong>1.</strong> 
 
                   <a href="https://twitter.com/intent/tweet?screen_name=<%= Setting.last.twitter_user %>" class="twitter-mention-button" data-related="<%= Setting.last.twitter_user %>">Tweet to <%= Setting.last.twitter_user %></a>
@@ -81,11 +91,15 @@
 
                     <p  class="lead"><strong>2.</strong> Hit <%= link_to refresh_jobs_path, :class => 'btn btn-success' do %>
               <i class="icon-print"></i> Print New Tweets 
-          <% end %></p><p  class="lead"><strong>3.</strong> Watch it at the Mini Maker Faire Toronto </p>
+          <% end %></p><p  class="lead"><strong>3.</strong> Watch it being printed on the <i class="icon-facetime-video icon-large"></i> live stream.</p>
 
 
 
                   </p>
+
+          <% end %>
+
+
 
 
                     <p>Feel free to checkout <%= link_to "some videos of me typing", "http://www.youtube.com/watch?v=3T5DqVbl8Cg&feature=share&list=PL0BF6SJ3yFfSUuW_tw3MK73mTsZYbt21W" %> and the <%= link_to "blog posts about me", "http://michael.schwanzer.info/blog/?s=typewriter" %>.</p>

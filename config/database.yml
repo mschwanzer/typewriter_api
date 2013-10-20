@@ -1,7 +1,7 @@
 development:
   adapter: postgresql
-  username: twg_dev
-  password: twg_dev!
+  username: mschwanzer
+  password: 
   min_messages: WARNING
   database: typewriter_api_dev
   host: localhost
@@ -9,8 +9,8 @@ development:
 
 test:
   adapter: postgresql
-  username: twg_dev
-  password: twg_dev!
+  username: mschwanzer
+  password: 
   min_messages: WARNING
   database: typewriter_api_test
   host: localhost
@@ -18,8 +18,8 @@ test:
 
 production:
   adapter: postgresql
-  username: twg_dev
-  password: twg_dev!
+  username: mschwanzer
+  password: 
   min_messages: WARNING
   database: typewriter_api_prod
   host: localhost
